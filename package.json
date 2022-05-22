@@ -1,0 +1,58 @@
+{
+  "name": "serverless-rest-api",
+  "version": "1.0.0",
+  "description": "API custom",
+  "main": "src/",
+  "scripts": {
+    "lint": "./node_modules/tslint/bin/tslint **/*.ts",
+    "help": "./node_modules/.bin/serverless -h",
+    "lintfix": "./node_modules/tslint/bin/tslint --fix **/*.ts ",
+    "invoke": "serverless webpack invoke",
+    "start": "./node_modules/.bin/serverless offline start -s local --progress --colors --watch --location ./dist/service",
+    "postinstall": "./node_modules/.bin/serverless dynamodb install -s test"
+  },
+  "devDependencies": {
+    "@types/aws-sdk": "^2.7.0",
+    "@types/node": "^8.0.50",
+    "aws-sdk": "2.151.0",
+    "aws-sdk-mock": "1.7.0",
+    "nyc": "11.5.0",
+    "serverless": "^1.27.2",
+    "serverless-dynamodb-local": "^0.2.18",
+    "serverless-offline": "^3.20.3",
+    "serverless-webpack": "3.0.0",
+    "ts-loader": "4.0.0",
+    "ts-node": "5.0.0",
+    "tslint": "5.8.0",
+    "typescript": "2.5.2",
+    "webpack": "4.0.1",
+    "webpack-cli": "2.0.9"
+  },
+  "author": "The serverless webpack authors (https://github.com/elastic-coders/serverless-webpack)",
+  "license": "MIT",
+  "dependencies": {
+    "uuid": "^3.1.0",
+    "request": "2.83.0",
+    "request-promise-native": "1.0.5"
+  },
+  "nyc": {
+    "extension": [
+      ".ts"
+    ],
+    "require": [
+      "ts-node/register"
+    ],
+    "include": [
+      "src/**/*"
+    ],
+    "exclude": [
+      "**/*.d.ts",
+      "src/**/*"
+    ],
+    "reporter": [
+      "text"
+    ],
+    "all": true,
+    "check-coverage": true
+  }
+}

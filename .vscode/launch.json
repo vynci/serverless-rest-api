@@ -1,0 +1,38 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug Lambdas",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceRoot}/node_modules/serverless/bin/serverless",
+            "args": [
+                "-r",
+                "ts-node/register",
+                "offline",
+                "-s",
+                "test",
+                "--progress",
+                "--colors",
+                "--watch"
+            ],
+            "cwd": "${workspaceRoot}",
+            "protocol": "inspector",
+            "env": {"AWS_PROFILE": "pn-retail"}
+        },
+        {
+            "name": "Debug Mocha Tests",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceRoot}/node_modules/.bin/_mocha",
+            "args": [
+                "-r",
+                "ts-node/register",
+                "${workspaceRoot}/test/**/*.ts",
+                "--colors"
+            ],
+            "cwd": "${workspaceRoot}",
+            "protocol": "inspector"
+        }
+    ]
+}
