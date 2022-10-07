@@ -24,7 +24,6 @@ export const createTodo = async (payload: any): Promise<any> => {
   };
 
   try {
-    // write the todo item to the database
     let result: any = await dynamodb.put(params).promise();
 
     result = params.Item;
@@ -55,7 +54,6 @@ export const updateTodo = async (id: string, payload: any): Promise<any> => {
   };
 
   try {
-    // update device info in the database
     let result = await dynamodb.update(params).promise();
 
     return result;
@@ -64,11 +62,6 @@ export const updateTodo = async (id: string, payload: any): Promise<any> => {
   }
 };
 
-/**
- * Deletes device object for a certain owner.
- * @param userId the id of the device owner.
- * @param deviceId the id of the device.
- */
 export const deleteTodo = async (id: string): Promise<any> => {
   const params = {
     TableName: env.todoTable,
@@ -80,7 +73,6 @@ export const deleteTodo = async (id: string): Promise<any> => {
   };
 
   try {
-    // delete the device from the database
     let result = await dynamodb.delete(params).promise();
 
     return result;
@@ -107,10 +99,6 @@ export const getTodo = async (id: string): Promise<any> => {
   }
 };
 
-/**
- * Will fetch devices by userId.
- * @param userId the id of the device owner.
- */
 export const listTodos = async (): Promise<any> => {
   const params: any = {
     TableName: env.todoTable,
